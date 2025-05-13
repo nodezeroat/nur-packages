@@ -9,22 +9,22 @@ system ? builtins.currentSystem
 }:
 let
   shaMap = {
-    x86_64-linux = "0rrilmiahkljg8cvaqafz90fg3561zibh0b2ffdqnjkf10qansky";
-    aarch64-linux = "1bxir4ykyznk3ki2yipn0rb0jb3y4chkkii9h253ggraisilg8f5";
-    x86_64-darwin = "1a6hz923ggbwraafydmqfh3fb7k2a5ri1l8i9z8s6kk0lbbj011p";
-    aarch64-darwin = "1wq1kq2zkdpx4wzsvd7dhc2d3s45mi274n26whp6yb28z3j10fb9";
+    x86_64-linux = "072dqqi0rf1w1by0m1cpds6mzwrzkf1a3c4nld8wdmrvcwn0dcz9";
+    aarch64-linux = "02rw6wjj8b2s7162f159hivaaaagzmzy2mgbizqq2mjq1cjr44rk";
+    x86_64-darwin = "19d8sly4cp1s49b30r75gf8w3az6izvfxsgx6akr3df48zqbpm85";
+    aarch64-darwin = "0p94n0g4w7zmg0zlvm0sachbdg0a91kvlqxdwjsxl6b074fbib3r";
   };
 
   urlMap = {
-    x86_64-linux = "https://o.xdb.be/hammer/release/v0.0.4/hammer_Linux_x86_64.tar.gz";
-    aarch64-linux = "https://o.xdb.be/hammer/release/v0.0.4/hammer_Linux_arm64.tar.gz";
-    x86_64-darwin = "https://o.xdb.be/hammer/release/v0.0.4/hammer_Darwin_x86_64.tar.gz";
-    aarch64-darwin = "https://o.xdb.be/hammer/release/v0.0.4/hammer_Darwin_arm64.tar.gz";
+    x86_64-linux = "https://o.xdb.be/hammer/release/v0.0.5/hammer_Linux_x86_64.tar.gz";
+    aarch64-linux = "https://o.xdb.be/hammer/release/v0.0.5/hammer_Linux_arm64.tar.gz";
+    x86_64-darwin = "https://o.xdb.be/hammer/release/v0.0.5/hammer_Darwin_x86_64.tar.gz";
+    aarch64-darwin = "https://o.xdb.be/hammer/release/v0.0.5/hammer_Darwin_arm64.tar.gz";
   };
 in
 stdenvNoCC.mkDerivation {
   pname = "hammer";
-  version = "0.0.4";
+  version = "0.0.5";
   src = fetchurl {
     url = urlMap.${system};
     sha256 = shaMap.${system};
@@ -42,6 +42,9 @@ stdenvNoCC.mkDerivation {
   system = system;
 
   meta = {
+    description = "Tool for CTF challenge authors";
+    homepage = "https://ctf.cyberleague.at";
+    license = lib.licenses.unfree;
 
     sourceProvenance = [ lib.sourceTypes.binaryNativeCode ];
 
